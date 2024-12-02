@@ -613,4 +613,20 @@ class CreateTest extends TestCase
         $exitCode = $commandTester->execute(['command' => $command->getName(), '--style' => 'foo']);
         $this->assertSame(AbstractCommand::CODE_ERROR, $exitCode);
     }
+
+    public function testCreateWithKeywordNameThrows(): void
+    {
+        $application = new PhinxApplication();
+        $application->add(new Create());
+
+        /** @var Create $command */
+        $command = $application->find('create');
+        $command->setConfig($this->config);
+
+        $commandTester = new CommandTester($command);
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('The migration class name "Class" is a reserved PHP keyword. Please choose a different class name.');
+        $commandTester->execute(['command' => $command->getName(), 'name' => 'Class']);
+    }
 }
