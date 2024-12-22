@@ -5595,7 +5595,7 @@ class ManagerTest extends TestCase
         $this->assertTrue($adapter->hasTable('change_direction_test'));
         $this->assertTrue($adapter->hasColumn('change_direction_test', 'thing'));
         $this->assertEquals(
-            2,
+            4,
             count($adapter->fetchAll('SELECT * FROM change_direction_test WHERE thing IS NOT NULL'))
         );
 
