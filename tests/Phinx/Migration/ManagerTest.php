@@ -5593,10 +5593,10 @@ class ManagerTest extends TestCase
         $this->assertTrue($adapter->hasColumn('users', 'biography'));
         $this->assertTrue($adapter->hasForeignKey('just_logins', ['user_id']));
         $this->assertTrue($adapter->hasTable('change_direction_test'));
-        $this->assertTrue($adapter->hasColumn('change_direction_test', 'subthing'));
+        $this->assertTrue($adapter->hasColumn('change_direction_test', 'thing'));
         $this->assertEquals(
             2,
-            count($adapter->fetchAll('SELECT * FROM change_direction_test WHERE subthing IS NOT NULL'))
+            count($adapter->fetchAll('SELECT * FROM change_direction_test WHERE thing IS NOT NULL'))
         );
 
         // revert all changes to the first

@@ -33,7 +33,6 @@ use Phinx\Db\Table\Table;
 use Phinx\Db\Util\AlterInstructions;
 use Phinx\Migration\MigrationInterface;
 use Phinx\Util\Literal;
-use ReflectionProperty;
 use RuntimeException;
 use SensitiveParameter;
 use Symfony\Component\Console\Output\OutputInterface;
