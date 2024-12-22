@@ -64,7 +64,7 @@ Other translations include:
 
 ### PostgreSQL
 
-- Not able to set a unique constraint on a table (<https://github.com/typrint/phinx/issues/1026>).
+- Not able to set a unique constraint on a table (<https://github.com/cakephp/phinx/issues/1026>).
 
 ## Misc
 
