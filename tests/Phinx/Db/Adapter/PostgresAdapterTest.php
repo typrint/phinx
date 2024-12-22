@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Test\Phinx\Db\Adapter;
 
-use Cake\Database\Query;
 use InvalidArgumentException;
 use PDO;
 use Phinx\Db\Adapter\AbstractAdapter;
@@ -2841,48 +2840,6 @@ OUTPUT;
         $actualOutput = $consoleOutput->fetch();
         $this->assertStringStartsWith("BEGIN;\n", $actualOutput, 'Passing the --dry-run doesn\'t dump the transaction to the output');
         $this->assertStringEndsWith("COMMIT;\nROLLBACK;\n", $actualOutput, 'Passing the --dry-run doesn\'t dump the transaction to the output');
-    }
-
-    /**
-     * Tests interaction with the query builder
-     */
-    public function testQueryBuilder()
-    {
-        $table = new Table('table1', [], $this->adapter);
-        $table->addColumn('string_col', 'string')
-            ->addColumn('int_col', 'integer')
-            ->save();
-
-        $builder = $this->adapter->getQueryBuilder(Query::TYPE_INSERT);
-        $stm = $builder
-            ->insert(['string_col', 'int_col'])
-            ->into('table1')
-            ->values(['string_col' => 'value1', 'int_col' => 1])
-            ->values(['string_col' => 'value2', 'int_col' => 2])
-            ->execute();
-
-        $this->assertEquals(2, $stm->rowCount());
-
-        $builder = $this->adapter->getQueryBuilder(query::TYPE_SELECT);
-        $stm = $builder
-            ->select('*')
-            ->from('table1')
-            ->where(['int_col >=' => 2])
-            ->execute();
-
-        $this->assertEquals(1, $stm->rowCount());
-        $this->assertEquals(
-            ['id' => 2, 'string_col' => 'value2', 'int_col' => '2'],
-            $stm->fetch('assoc')
-        );
-
-        $builder = $this->adapter->getQueryBuilder(Query::TYPE_DELETE);
-        $stm = $builder
-            ->delete('table1')
-            ->where(['int_col <' => 2])
-            ->execute();
-
-        $this->assertEquals(1, $stm->rowCount());
     }
 
     public function testQueryWithParams()

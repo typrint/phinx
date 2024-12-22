@@ -302,7 +302,7 @@ standalone server:
 
 .. code-block:: bash
 
-        $ php -S localhost:8000 vendor/robmorgan/phinx/app/web.php
+        $ php -S localhost:8000 vendor/typrint/phinx/app/web.php
 
 This will create local web server at `<http://localhost:8000>`__ which will show current
 migration status by default. To run migrations up, use `<http://localhost:8000/migrate>`__

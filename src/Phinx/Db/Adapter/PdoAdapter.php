@@ -9,12 +9,6 @@ declare(strict_types=1);
 namespace Phinx\Db\Adapter;
 
 use BadMethodCallException;
-use Cake\Database\Connection;
-use Cake\Database\Query;
-use Cake\Database\Query\DeleteQuery;
-use Cake\Database\Query\InsertQuery;
-use Cake\Database\Query\SelectQuery;
-use Cake\Database\Query\UpdateQuery;
 use InvalidArgumentException;
 use PDO;
 use PDOException;
@@ -54,11 +48,6 @@ abstract class PdoAdapter extends AbstractAdapter implements DirectActionInterfa
      * @var \PDO|null
      */
     protected ?PDO $connection = null;
-
-    /**
-     * @var \Cake\Database\Connection|null
-     */
-    protected ?Connection $decoratedConnection = null;
 
     /**
      * Writes a message to stdout if verbose output is on
@@ -212,78 +201,6 @@ abstract class PdoAdapter extends AbstractAdapter implements DirectActionInterfa
         $result = $stmt->execute($params);
 
         return $result ? $stmt->rowCount() : $result;
-    }
-
-    /**
-     * Returns the Cake\Database connection object using the same underlying
-     * PDO object as this connection.
-     *
-     * @return \Cake\Database\Connection
-     */
-    abstract public function getDecoratedConnection(): Connection;
-
-    /**
-     * Build connection instance.
-     *
-     * @param class-string<\Cake\Database\Driver> $driverClass Driver class name.
-     * @param array $options Options.
-     * @return \Cake\Database\Connection
-     */
-    protected function buildConnection(string $driverClass, array $options): Connection
-    {
-        $driver = new $driverClass($options);
-        $prop = new ReflectionProperty($driver, 'pdo');
-        $prop->setValue($driver, $this->connection);
-
-        return new Connection(['driver' => $driver] + $options);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getQueryBuilder(string $type): Query
-    {
-        return match ($type) {
-            Query::TYPE_SELECT => $this->getDecoratedConnection()->selectQuery(),
-            Query::TYPE_INSERT => $this->getDecoratedConnection()->insertQuery(),
-            Query::TYPE_UPDATE => $this->getDecoratedConnection()->updateQuery(),
-            Query::TYPE_DELETE => $this->getDecoratedConnection()->deleteQuery(),
-            default => throw new InvalidArgumentException(
-                'Query type must be one of: `select`, `insert`, `update`, `delete`.'
-            )
-        };
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getSelectBuilder(): SelectQuery
-    {
-        return $this->getDecoratedConnection()->selectQuery();
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getInsertBuilder(): InsertQuery
-    {
-        return $this->getDecoratedConnection()->insertQuery();
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getUpdateBuilder(): UpdateQuery
-    {
-        return $this->getDecoratedConnection()->updateQuery();
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getDeleteBuilder(): DeleteQuery
-    {
-        return $this->getDecoratedConnection()->deleteQuery();
     }
 
     /**

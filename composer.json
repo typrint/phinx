@@ -1,5 +1,5 @@
 {
-    "name": "robmorgan/phinx",
+    "name": "typrint/phinx",
     "type": "library",
     "description": "Phinx makes it ridiculously easy to manage the database migrations for your PHP app.",
     "keywords": [
@@ -32,13 +32,17 @@
         {
             "name": "CakePHP Community",
             "role": "Developer",
-            "homepage": "https://github.com/cakephp/phinx/graphs/contributors"
+            "homepage": "https://github.com/typrint/phinx/graphs/contributors"
+        },
+        {
+            "name": "TyPrint Core Team",
+            "role": "Developer",
+            "homepage": "https://typrint.org"
         }
     ],
     "require": {
         "php-64bit": ">=8.1",
         "composer-runtime-api": "^2.0",
-        "cakephp/database": "^5.0.2",
         "psr/container": "^1.1|^2.0",
         "symfony/config": "^3.4|^4.0|^5.0|^6.0|^7.0",
         "symfony/console": "^6.0|^7.0"

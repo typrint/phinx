@@ -36,7 +36,7 @@ version = '0.16'
 
 show_root_link = True
 
-repository = 'cakephp/phinx'
+repository = 'typrint/phinx'
 
 source_path = 'docs/'
 

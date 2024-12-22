@@ -16,7 +16,7 @@ To install Phinx, simply require it using Composer:
 
 .. code-block:: bash
 
-    php composer.phar require robmorgan/phinx
+    php composer.phar require typrint/phinx
 
 Create folders in your project following the structure ``db/migrations`` with adequate permissions.
 It is where your migration files will live and should be writable.

@@ -8,8 +8,6 @@ declare(strict_types=1);
 
 namespace Phinx\Db\Adapter;
 
-use Cake\Database\Connection;
-use Cake\Database\Driver\Mysql as MysqlDriver;
 use InvalidArgumentException;
 use PDO;
 use Phinx\Config\FeatureFlags;
@@ -1536,25 +1534,5 @@ class MysqlAdapter extends PdoAdapter
     public function getColumnTypes(): array
     {
         return array_merge(parent::getColumnTypes(), static::$specificColumnTypes);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getDecoratedConnection(): Connection
-    {
-        if (isset($this->decoratedConnection)) {
-            return $this->decoratedConnection;
-        }
-
-        $options = $this->getOptions();
-        $options = [
-            'username' => $options['user'] ?? null,
-            'password' => $options['pass'] ?? null,
-            'database' => $options['name'],
-            'quoteIdentifiers' => true,
-        ] + $options;
-
-        return $this->decoratedConnection = $this->buildConnection(MysqlDriver::class, $options);
     }
 }

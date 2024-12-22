@@ -9,8 +9,6 @@ declare(strict_types=1);
 namespace Phinx\Db\Adapter;
 
 use BadMethodCallException;
-use Cake\Database\Connection;
-use Cake\Database\Driver\Sqlserver as SqlServerDriver;
 use InvalidArgumentException;
 use PDO;
 use PDOException;
@@ -1354,25 +1352,5 @@ ORDER BY T.[name], I.[index_id];";
         $endTime = str_replace(' ', 'T', $endTime);
 
         return parent::migrated($migration, $direction, $startTime, $endTime);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getDecoratedConnection(): Connection
-    {
-        if (isset($this->decoratedConnection)) {
-            return $this->decoratedConnection;
-        }
-
-        $options = $this->getOptions();
-        $options = [
-            'username' => $options['user'] ?? null,
-            'password' => $options['pass'] ?? null,
-            'database' => $options['name'],
-            'quoteIdentifiers' => true,
-        ] + $options;
-
-        return $this->decoratedConnection = $this->buildConnection(SqlServerDriver::class, $options);
     }
 }

@@ -9,8 +9,6 @@ declare(strict_types=1);
 namespace Phinx\Db\Adapter;
 
 use BadMethodCallException;
-use Cake\Database\Connection;
-use Cake\Database\Driver\Sqlite as SqliteDriver;
 use InvalidArgumentException;
 use PDO;
 use PDOException;
@@ -1989,28 +1987,5 @@ PCRE_PATTERN;
         }
 
         return $def;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getDecoratedConnection(): Connection
-    {
-        if (isset($this->decoratedConnection)) {
-            return $this->decoratedConnection;
-        }
-
-        $options = $this->getOptions();
-        $options['quoteIdentifiers'] = true;
-
-        if (!empty($options['name'])) {
-            $options['database'] = $options['name'];
-
-            if (file_exists($options['name'] . $this->suffix)) {
-                $options['database'] = $options['name'] . $this->suffix;
-            }
-        }
-
-        return $this->decoratedConnection = $this->buildConnection(SqliteDriver::class, $options);
     }
 }

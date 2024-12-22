@@ -1,10 +1,10 @@
 # [Phinx](https://phinx.org): Simple PHP Database Migrations
 
-[![Build Status](https://github.com/cakephp/phinx/workflows/CI/badge.svg?branch=0.x&event=push)](https://github.com/cakephp/phinx/actions?query=workflow%3A%22CI%22+branch%3A0.x+event%3Apush)
-[![Code Coverage](https://codecov.io/gh/cakephp/phinx/branch/master/graph/badge.svg)](https://codecov.io/gh/cakephp/phinx)
-![Packagist Version](https://img.shields.io/packagist/v/robmorgan/phinx)
+[![Build Status](https://github.com/typrint/phinx/workflows/CI/badge.svg?branch=0.x&event=push)](https://github.com/typrint/phinx/actions?query=workflow%3A%22CI%22+branch%3A0.x+event%3Apush)
+[![Code Coverage](https://codecov.io/gh/typrint/phinx/branch/master/graph/badge.svg)](https://codecov.io/gh/typrint/phinx)
+![Packagist Version](https://img.shields.io/packagist/v/typrint/phinx)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%208.1-8892BF.svg)](https://php.net/)
-![Packagist Downloads](https://img.shields.io/packagist/dt/robmorgan/phinx)
+![Packagist Downloads](https://img.shields.io/packagist/dt/typrint/phinx)
 
 ## Intro
 
@@ -36,7 +36,7 @@ Phinx natively supports the following database adapters:
 
 ## Install & Run
 
-See [version and branch overview](https://github.com/cakephp/phinx/wiki#version-and-branch-overview) for branch and PHP compatibility.
+See [version and branch overview](https://github.com/typrint/phinx/wiki#version-and-branch-overview) for branch and PHP compatibility.
 
 ### Composer
 
@@ -51,7 +51,7 @@ The fastest way to install Phinx is to add it to your project using Composer (ht
 1. Require Phinx as a dependency using Composer:
 
     ```
-    php composer.phar require robmorgan/phinx
+    php composer.phar require typrint/phinx
     ```
 
 1. Install Phinx:
@@ -73,7 +73,7 @@ You can also use the Box application to build Phinx as a Phar archive (https://b
 1. Clone Phinx from GitHub
 
     ```
-    git clone https://github.com/cakephp/phinx.git
+    git clone https://github.com/typrint/phinx.git
     cd phinx
     ```
 
@@ -121,14 +121,14 @@ Follow [@CakePHP](https://twitter.com/cakephp) on Twitter to stay up to date.
 
 ### PostgreSQL
 
-- Not able to set a unique constraint on a table (<https://github.com/cakephp/phinx/issues/1026>).
+- Not able to set a unique constraint on a table (<https://github.com/typrint/phinx/issues/1026>).
 
 
 ## Misc
 
 ### Version History
 
-Please read the [release notes](https://github.com/cakephp/phinx/releases).
+Please read the [release notes](https://github.com/typrint/phinx/releases).
 
 ### License
 

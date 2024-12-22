@@ -5,7 +5,7 @@ tool possible. Without the support of our 130+ contributors, we wouldn't be wher
 We encourage anyone to submit documentation enhancements and code.
 
 Issues, feature requests, and bugs should be submitted using the Github issue tool:
-https://github.com/cakephp/phinx/issues.
+https://github.com/typrint/phinx/issues.
 
 This document briefly outlines the requirements to contribute code to Phinx.
 
@@ -28,7 +28,7 @@ Answering '**YES**' to all questions will increase the likelihood of your PR bei
 
 Great, so you want to contribute. Let's get started:
 
-1. Start by forking Phinx on GitHub: https://github.com/cakephp/phinx
+1. Start by forking Phinx on GitHub: https://github.com/typrint/phinx
 
 1. Clone your repository to a local directory on your development box.
 

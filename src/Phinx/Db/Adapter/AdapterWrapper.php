@@ -8,11 +8,6 @@ declare(strict_types=1);
 
 namespace Phinx\Db\Adapter;
 
-use Cake\Database\Query;
-use Cake\Database\Query\DeleteQuery;
-use Cake\Database\Query\InsertQuery;
-use Cake\Database\Query\SelectQuery;
-use Cake\Database\Query\UpdateQuery;
 use PDO;
 use Phinx\Db\Table\Column;
 use Phinx\Db\Table\Table;
@@ -480,45 +475,5 @@ abstract class AdapterWrapper implements AdapterInterface, WrapperInterface
     public function executeActions(Table $table, array $actions): void
     {
         $this->getAdapter()->executeActions($table, $actions);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getQueryBuilder(string $type): Query
-    {
-        return $this->getAdapter()->getQueryBuilder($type);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getSelectBuilder(): SelectQuery
-    {
-        return $this->getAdapter()->getSelectBuilder();
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getInsertBuilder(): InsertQuery
-    {
-        return $this->getAdapter()->getInsertBuilder();
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getUpdateBuilder(): UpdateQuery
-    {
-        return $this->getAdapter()->getUpdateBuilder();
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getDeleteBuilder(): DeleteQuery
-    {
-        return $this->getAdapter()->getDeleteBuilder();
     }
 }

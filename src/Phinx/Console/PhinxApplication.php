@@ -94,6 +94,6 @@ class PhinxApplication extends Application
         }
 
         // Otherwise fallback to the version as reported by composer
-        return $this->version = InstalledVersions::getPrettyVersion('robmorgan/phinx') ?? 'UNKNOWN';
+        return $this->version = InstalledVersions::getPrettyVersion('typrint/phinx') ?? 'UNKNOWN';
     }
 }
