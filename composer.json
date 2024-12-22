@@ -83,9 +83,6 @@
         "lowest-setup": "composer update --prefer-lowest --prefer-stable --prefer-dist --no-interaction && cp composer.json composer.backup && composer require --dev dereuromark/composer-prefer-lowest && mv composer.backup composer.json",
         "test": "phpunit --colors=always"
     },
-    "bin": [
-        "bin/phinx"
-    ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
