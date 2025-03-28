@@ -1885,6 +1885,10 @@ PCRE_PATTERN;
         } else {
             $sqlType = $this->getSqlType($column->getType());
             $def = strtoupper($sqlType['name']);
+            // SQLite must use INTEGER for autoincrement columns
+            if ($column->isIdentity()) {
+                $def = 'INTEGER';
+            }
 
             $limitable = in_array(strtoupper($sqlType['name']), $this->definitionsWithLimits, true);
             if (($column->getLimit() || isset($sqlType['limit'])) && $limitable) {
